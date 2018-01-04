@@ -758,6 +758,101 @@ void OLEDDisplayBuffer(uint8_t iDevice)
 }
 
 
+char * reverse(char * str)
+{
+    int iStrLen = strlen(str);
+    char cTemp;
+
+    for (int i=0; i< iStrLen; i++)
+    {
+        cTemp  = str[i];
+        str[i] = str[iStrLen - i - 1];
+                 str[iStrLen - i - 1] = 0;
+    }
+
+}
+
+// Implementation of itoa()
+char* itoa(int num, char* str, int base)
+{
+    int i = 0;
+    bool isNegative = false;
+
+    /* Handle 0 explicitely, otherwise empty string is printed for 0 */
+    if (num == 0)
+    {
+        str[i++] = '0';
+        str[i] = '\0';
+        return str;
+    }
+
+    // In standard itoa(), negative numbers are handled only with
+    // base 10. Otherwise numbers are considered unsigned.
+    if (num < 0 && base == 10)
+    {
+        isNegative = true;
+        num = -num;
+    }
+
+    // Process individual digits
+    while (num != 0)
+    {
+        int rem = num % base;
+        str[i++] = (rem > 9)? (rem-10) + 'a' : rem + '0';
+        num = num/base;
+    }
+
+    // If number is negative, append '-'
+    if (isNegative)
+        str[i++] = '-';
+
+    str[i] = '\0'; // Append string terminator
+
+    // Reverse the string
+    //reverse(str);
+
+    return str;
+}
+
+void OLEDDisplayCartesianBuffer(int iDevice)
+{
+    SetOLEDChan(iDevice);
+    ConvertCartesianBufferToOLEDBuffer(iDevice);
+    OLEDDisplayBuffer(iDevice);
+}
+
+
+void OLEDDisplayIntAt(uint8_t iDevice, int32_t iVal, uint8_t iRow, uint8_t iBaseAddr)
+{
+    char itoaBuff[3];
+    sprintf(itoaBuff, "%03d", iVal);
+
+    iBaseAddr += iRow*16;
+
+    OLEDTextBuff[iBaseAddr+0] = itoaBuff[0];
+    OLEDTextBuff[iBaseAddr+1] = itoaBuff[1];
+    OLEDTextBuff[iBaseAddr+2] = itoaBuff[2];
+
+    OLED_Print_ParamLeft(iDevice);
+
+    OLEDDisplayCartesianBuffer(iDevice);
+}
+
+
+void OLEDCountUp()
+{
+    static int iCount=0;
+
+    uint8_t iDevice = 0;
+    uint8_t iRow    = 3;
+    uint8_t iCol    = 10;
+
+
+    OLEDDisplayIntAt(iDevice, iCount, iRow, iCol);
+
+    if (++iCount >=999){ iCount = 0; }
+}
+
 
 void OLEDDisplay()
 {

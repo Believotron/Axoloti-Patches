@@ -746,7 +746,7 @@ void OLEDDisplayBuffer(uint8_t iDevice)
 
       thisMsg.status = i2cMasterTransmitTimeout(&I2CD1, OLED0._i2caddr, txbuf, I2C_BYTES_PER_XFER+1, rxbuf, 0, tmo); // <TBD add status checking>
 
-      //chThdSleepMilliseconds(1);
+      chThdSleepMilliseconds(1);
     }
 
     //debugPulse(2,2);
@@ -822,16 +822,28 @@ void OLEDDisplayCartesianBuffer(int iDevice)
 }
 
 
-void OLEDDisplayIntAt(uint8_t iDevice, int32_t iVal, uint8_t iRow, uint8_t iBaseAddr)
+void OLEDDisplayIntAt(uint8_t iDevice, int32_t iVal, uint8_t iRow, uint8_t iBaseAddr, uint8_t iStrLen)
 {
-    char itoaBuff[3];
-    sprintf(itoaBuff, "%03d", iVal);
+    char itoaBuff[16];
+    char cFormat[8];
+    char cMetaFormat[8];
+
+    strcpy (cFormat, "%+0");
+    sprintf(cMetaFormat, "%d", iStrLen); // Creates the format string
+    strcat (cFormat, cMetaFormat);
+    strcat (cFormat, "d");
+
+    //sprintf(itoaBuff, "%03d", iVal);
+    sprintf(itoaBuff, cFormat, iVal);
 
     iBaseAddr += iRow*16;
 
-    OLEDTextBuff[iBaseAddr+0] = itoaBuff[0];
-    OLEDTextBuff[iBaseAddr+1] = itoaBuff[1];
-    OLEDTextBuff[iBaseAddr+2] = itoaBuff[2];
+    for (int i=0; i<iStrLen; i++) { OLEDTextBuff[iBaseAddr+i] = itoaBuff[i];  }
+
+
+    // OLEDTextBuff[iBaseAddr+0] = itoaBuff[0];
+    // OLEDTextBuff[iBaseAddr+1] = itoaBuff[1];
+    // OLEDTextBuff[iBaseAddr+2] = itoaBuff[2];
 
     OLED_Print_ParamLeft(iDevice);
 
@@ -841,16 +853,17 @@ void OLEDDisplayIntAt(uint8_t iDevice, int32_t iVal, uint8_t iRow, uint8_t iBase
 
 void OLEDCountUp()
 {
-    static int iCount=0;
+    static int iCount=-50;
 
     uint8_t iDevice = 0;
-    uint8_t iRow    = 3;
-    uint8_t iCol    = 10;
+    uint8_t iRow    = 0;
+    uint8_t iCol    = 4;
+    uint8_t iStrLen = 8;
 
 
-    OLEDDisplayIntAt(iDevice, iCount, iRow, iCol);
+    OLEDDisplayIntAt(iDevice, iCount, iRow, iCol, iStrLen);
 
-    if (++iCount >=999){ iCount = 0; }
+    if (++iCount >=5999){ iCount = 0; }
 }
 
 

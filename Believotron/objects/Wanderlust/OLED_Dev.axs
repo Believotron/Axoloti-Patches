@@ -173,7 +173,7 @@
    </obj>
    <obj type="osc/sine" uuid="6e094045cca76a9dbf7ebfa72e44e4700d2b3ba" name="sine_1" x="630" y="1456">
       <params>
-         <frac32.s.map name="pitch" value="-31.0"/>
+         <frac32.s.map name="pitch" value="0.0"/>
       </params>
       <attribs/>
    </obj>
@@ -379,16 +379,23 @@ void loop(void)
 
 	static int iOLED=0;	
 	iOLED++;
-	if (iOLED==2000)
+
+	
+	if (iOLED==100)
 	{
+	
+	OLEDCountUp();
+	chThdSleepMilliseconds(20); 	
+	
 	//	OLEDInit();		
 //		//OLED_Sandbox();
 		//OLED_setstring();
 		
-		OLED_checkerboardTest();
+		//OLED_checkerboardTest();
 
 		//OLEDMemDebug();
-		OLEDDisplay();
+		//OLEDDisplay();
+	//	OLEDCountUp();
 
 		//OLEDDisplayDebug();
 

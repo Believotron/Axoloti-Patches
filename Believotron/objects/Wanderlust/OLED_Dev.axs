@@ -171,6 +171,18 @@
       <params/>
       <attribs/>
    </obj>
+   <obj type="osc/sine" uuid="6e094045cca76a9dbf7ebfa72e44e4700d2b3ba" name="sine_1" x="630" y="1456">
+      <params>
+         <frac32.s.map name="pitch" value="-31.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="drj/audio/out_stereo_vol" uuid="awca1a567f535acc21055669829101d3ee7f0189" name="out_stereo_vol_1" x="770" y="1456">
+      <params>
+         <frac32.u.map name="volume" value="17.5"/>
+      </params>
+      <attribs/>
+   </obj>
    <obj type="conv/unipolar2bipolar" uuid="efc8ee28c508740c5edf7995eaaa07a6d6818e5e" name="unipolar2bipolar_6" x="1554" y="1470">
       <params/>
       <attribs/>
@@ -228,15 +240,11 @@
    </obj>
    <obj type="ctrl/toggle" uuid="42b8134fa729d54bfc8d62d6ef3fa99498c1de99" name="Default_OLED_TXT" x="742" y="1652">
       <params>
-         <bool32.tgl name="b" onParent="true" value="0"/>
+         <bool32.tgl name="b" onParent="true" value="1"/>
       </params>
       <attribs/>
    </obj>
    <obj type="logic/inv" uuid="2bd44b865d3b63ff9b80862242bf5be779e3ad5" name="inv_2" x="868" y="1666">
-      <params/>
-      <attribs/>
-   </obj>
-   <obj type="gpio/i2c/config" uuid="b095a33e56de5fcd23740a7d983bc0bafb315d81" name="i2c.begin_1" x="1288" y="1680">
       <params/>
       <attribs/>
    </obj>
@@ -245,6 +253,10 @@
       <attribs/>
    </obj>
    <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="knob_top_6" x="1680" y="1680">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="I2C/configI2C" uuid="5ec2ea89-c080-4da0-bcb5-15f58174cc1a" name="configI2C_1" x="1288" y="1694">
       <params/>
       <attribs/>
    </obj>
@@ -310,10 +322,11 @@ void SPI_CS_ALL_OFF()
 // </SPI stuff>
 
 // Default Voodoo to make serial communication working; Rabbithole of shared memory
+#define TXBUFFSIZE 128
 void LinkTxRxBuffers(void)
 {
-	static uint8_t _txbuf[8] __attribute__ ((section (".sram2")));
-	static uint8_t _rxbuf[8] __attribute__ ((section (".sram2")));
+	static uint8_t _txbuf[TXBUFFSIZE] __attribute__ ((section (".sram2")));
+	static uint8_t _rxbuf[TXBUFFSIZE] __attribute__ ((section (".sram2")));
 	txbuf = _txbuf;
 	rxbuf = _rxbuf;
 }
@@ -364,16 +377,25 @@ void loop(void)
 
 // Debug - TBD enable with switch, and perform without loss of audio processing
 
-//	static int iOLED=0;	
-//	iOLED++;
-//	if (iOLED==2000)
-//	{
-//		OLEDInit();
+	static int iOLED=0;	
+	iOLED++;
+	if (iOLED==2000)
+	{
+	//	OLEDInit();		
 //		//OLED_Sandbox();
-//		OLED_setstring();
-//		OLEDDisplay();
-//		iOLED=0;
-//	}
+		//OLED_setstring();
+		
+		OLED_checkerboardTest();
+
+		//OLEDMemDebug();
+		OLEDDisplay();
+
+		//OLEDDisplayDebug();
+
+		
+		
+		iOLED=0;
+	}
 
 	
 }
@@ -728,10 +750,6 @@ void loop(void)
       <params/>
       <attribs/>
    </obj>
-   <obj type="mux/mux 2" uuid="777491e645978e331fcbab6610f52c1aaa5ade0e" name="mux_16" x="1148" y="2800">
-      <params/>
-      <attribs/>
-   </obj>
    <obj type="patch/inlet string" uuid="6c562c1a7890cccf18fa7327d8baa476d0926cd8" name="OLED D3" x="994" y="2814">
       <params/>
       <attribs/>
@@ -964,10 +982,6 @@ void loop(void)
          <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="OLEDD2_"/>
       </net>
       <net>
-         <source obj="mux_16" outlet="o"/>
-         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="OLEDD3_"/>
-      </net>
-      <net>
          <source obj="c_1" outlet="out"/>
          <dest obj="mux_1" inlet="i1"/>
       </net>
@@ -1028,10 +1042,6 @@ void loop(void)
          <dest obj="mux_15" inlet="i1"/>
       </net>
       <net>
-         <source obj="c_16" outlet="out"/>
-         <dest obj="mux_16" inlet="i1"/>
-      </net>
-      <net>
          <source obj="Default_OLED_TXT" outlet="o"/>
          <dest obj="inv_2" inlet="i"/>
       </net>
@@ -1052,7 +1062,6 @@ void loop(void)
          <dest obj="mux_13" inlet="s"/>
          <dest obj="mux_14" inlet="s"/>
          <dest obj="mux_15" inlet="s"/>
-         <dest obj="mux_16" inlet="s"/>
       </net>
       <net>
          <source obj="OLED A1" outlet="inlet"/>
@@ -1109,10 +1118,6 @@ void loop(void)
       <net>
          <source obj="OLED D2" outlet="inlet"/>
          <dest obj="mux_15" inlet="i2"/>
-      </net>
-      <net>
-         <source obj="OLED D3" outlet="inlet"/>
-         <dest obj="mux_16" inlet="i2"/>
       </net>
       <net>
          <source obj="OLED A0" outlet="inlet"/>
@@ -1228,6 +1233,11 @@ void loop(void)
          <source obj="and_2" outlet="o"/>
          <dest obj="JOY1_BTN" inlet="outlet"/>
       </net>
+      <net>
+         <source obj="sine_1" outlet="wave"/>
+         <dest obj="out_stereo_vol_1" inlet="left"/>
+         <dest obj="out_stereo_vol_1" inlet="right"/>
+      </net>
    </nets>
    <settings>
       <subpatchmode>no</subpatchmode>
@@ -1239,9 +1249,9 @@ void loop(void)
    </settings>
    <notes><![CDATA[]]></notes>
    <windowPos>
-      <x>560</x>
-      <y>155</y>
-      <width>1507</width>
-      <height>1014</height>
+      <x>654</x>
+      <y>16</y>
+      <width>1516</width>
+      <height>1016</height>
    </windowPos>
 </patch-1.0>

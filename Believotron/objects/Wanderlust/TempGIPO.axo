@@ -1,0 +1,39 @@
+<objdefs appVersion="1.0.12">
+   <obj.normal id="TempGIPO" uuid="d9094d99-93ee-4823-92ab-04f06c36f2ac">
+      <sDescription>external digital output pin control</sDescription>
+      <author>Johannes Taelman</author>
+      <license>BSD</license>
+      <inlets>
+         <bool32 name="in" description="positive = true"/>
+      </inlets>
+      <outlets/>
+      <displays/>
+      <params/>
+      <attribs>
+         <combo name="pad">
+            <MenuEntries>
+               <string>Foo</string>
+            </MenuEntries>
+            <CEntries>
+               <string>GPIOC,5</string>
+            </CEntries>
+         </combo>
+         <combo name="mode">
+            <MenuEntries>
+               <string>Push pull</string>
+               <string>Open drain</string>
+            </MenuEntries>
+            <CEntries>
+               <string>PAL_MODE_OUTPUT_PUSHPULL</string>
+               <string>PAL_MODE_OUTPUT_OPENDRAIN</string>
+            </CEntries>
+         </combo>
+      </attribs>
+      <code.init><![CDATA[//palSetPadMode(attr_pad,attr_mode);
+
+   palSetPadMode(GPIOC,5, PAL_MODE_OUTPUT_PUSHPULL);]]></code.init>
+      <code.krate><![CDATA[//palWritePad(attr_pad,(inlet_in>0));
+
+palWritePad(GPIOC,5,(inlet_in>0));]]></code.krate>
+   </obj.normal>
+</objdefs>

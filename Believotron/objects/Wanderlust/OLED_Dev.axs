@@ -167,7 +167,7 @@
       <params/>
       <attribs/>
    </obj>
-   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="knob_top_0" x="1680" y="1428">
+   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="knob_top_0" x="1694" y="1428">
       <params/>
       <attribs/>
    </obj>
@@ -183,11 +183,17 @@
       </params>
       <attribs/>
    </obj>
+   <obj type="ctrl/dial b" uuid="862e7d7f29093cb1ce4aed72244d118ad4d46692" name="dial_1" x="1106" y="1456">
+      <params>
+         <frac32.s.map name="value" value="-64.0"/>
+      </params>
+      <attribs/>
+   </obj>
    <obj type="conv/unipolar2bipolar" uuid="efc8ee28c508740c5edf7995eaaa07a6d6818e5e" name="unipolar2bipolar_6" x="1554" y="1470">
       <params/>
       <attribs/>
    </obj>
-   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="knob_top_1" x="1680" y="1470">
+   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="knob_top_1" x="1694" y="1470">
       <params/>
       <attribs/>
    </obj>
@@ -195,7 +201,7 @@
       <params/>
       <attribs/>
    </obj>
-   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="knob_top_2" x="1680" y="1512">
+   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="knob_top_2" x="1694" y="1512">
       <params/>
       <attribs/>
    </obj>
@@ -203,13 +209,13 @@
       <params/>
       <attribs/>
    </obj>
-   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="knob_top_3" x="1680" y="1554">
+   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="knob_top_3" x="1694" y="1554">
       <params/>
       <attribs/>
    </obj>
    <obj type="ctrl/toggle" uuid="42b8134fa729d54bfc8d62d6ef3fa99498c1de99" name="Reverse Knobs" x="1092" y="1582">
       <params>
-         <bool32.tgl name="b" onParent="true" value="1"/>
+         <bool32.tgl name="b" onParent="true" value="0"/>
       </params>
       <attribs/>
    </obj>
@@ -226,7 +232,7 @@
       <params/>
       <attribs/>
    </obj>
-   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="knob_top_4" x="1680" y="1596">
+   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="knob_top_4" x="1694" y="1596">
       <params/>
       <attribs/>
    </obj>
@@ -234,19 +240,13 @@
       <params/>
       <attribs/>
    </obj>
-   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="knob_top_5" x="1680" y="1638">
+   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="knob_top_5" x="1694" y="1638">
       <params/>
       <attribs/>
    </obj>
    <obj type="ctrl/toggle" uuid="42b8134fa729d54bfc8d62d6ef3fa99498c1de99" name="Default_OLED_TXT" x="742" y="1652">
       <params>
          <bool32.tgl name="b" onParent="true" value="1"/>
-      </params>
-      <attribs/>
-   </obj>
-   <obj type="ctrl/dial b" uuid="862e7d7f29093cb1ce4aed72244d118ad4d46692" name="dial_1" x="1134" y="1652">
-      <params>
-         <frac32.s.map name="value" value="19.200000762939453"/>
       </params>
       <attribs/>
    </obj>
@@ -258,7 +258,7 @@
       <params/>
       <attribs/>
    </obj>
-   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="knob_top_6" x="1680" y="1680">
+   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="knob_top_6" x="1694" y="1680">
       <params/>
       <attribs/>
    </obj>
@@ -276,7 +276,7 @@
       <params/>
       <attribs/>
    </obj>
-   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="knob_top_7" x="1680" y="1722">
+   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="knob_top_7" x="1694" y="1722">
       <params/>
       <attribs/>
    </obj>
@@ -304,7 +304,7 @@
          <table attributeName="str" table="OLED Test (3,0)"/>
       </attribs>
    </obj>
-   <obj type="script/BelievotronCore_PCB1005_KnobCore" uuid="dea40d4c-0e25-49d0-993a-55866aabd090" name="BelievotronCore_PCB1005_KnobCore_1" x="1288" y="1736">
+   <obj type="script/BelievotronCore_PCB1005_KnobCore" uuid="dea40d4c-0e25-49d0-993a-55866aabd090" name="BelievotronCore_PCB1005_KnobCore_1" x="1274" y="1736">
       <params/>
       <attribs>
          <text attributeName="script">
@@ -392,12 +392,15 @@ void loop(void)
 	static int iOLED=0;	
 	iOLED++;
 
+	OLEDTestBipolarDisplay();
+	//OLEDCountUp();
+
 	
-	if (iOLED==100)
-	{
+	//if (iOLED==100)
+	//{
 	
-	OLEDCountUp();
-	chThdSleepMilliseconds(20); 	
+//	OLEDCountUp();
+//	chThdSleepMilliseconds(20); 	
 	
 	//	OLEDInit();		
 //		//OLED_Sandbox();
@@ -413,8 +416,8 @@ void loop(void)
 
 		
 		
-		iOLED=0;
-	}
+//		iOLED=0;
+//	}
 
 	
 }
@@ -769,6 +772,10 @@ void loop(void)
       <params/>
       <attribs/>
    </obj>
+   <obj type="mux/mux 2" uuid="777491e645978e331fcbab6610f52c1aaa5ade0e" name="mux_16" x="1148" y="2800">
+      <params/>
+      <attribs/>
+   </obj>
    <obj type="patch/inlet string" uuid="6c562c1a7890cccf18fa7327d8baa476d0926cd8" name="OLED D3" x="994" y="2814">
       <params/>
       <attribs/>
@@ -887,34 +894,42 @@ void loop(void)
       <net>
          <source obj="unipolar2bipolar_5" outlet="o"/>
          <dest obj="knob_top_0" inlet="outlet"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i0_"/>
       </net>
       <net>
          <source obj="unipolar2bipolar_6" outlet="o"/>
          <dest obj="knob_top_1" inlet="outlet"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i1_"/>
       </net>
       <net>
          <source obj="unipolar2bipolar_7" outlet="o"/>
          <dest obj="knob_top_2" inlet="outlet"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i2_"/>
       </net>
       <net>
          <source obj="unipolar2bipolar_8" outlet="o"/>
          <dest obj="knob_top_3" inlet="outlet"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i3_"/>
       </net>
       <net>
          <source obj="unipolar2bipolar_9" outlet="o"/>
          <dest obj="knob_top_4" inlet="outlet"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i4_"/>
       </net>
       <net>
          <source obj="unipolar2bipolar_10" outlet="o"/>
          <dest obj="knob_top_5" inlet="outlet"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i5_"/>
       </net>
       <net>
          <source obj="unipolar2bipolar_11" outlet="o"/>
          <dest obj="knob_top_6" inlet="outlet"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i6_"/>
       </net>
       <net>
          <source obj="unipolar2bipolar_12" outlet="o"/>
          <dest obj="knob_top_7" inlet="outlet"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i7_"/>
       </net>
       <net>
          <source obj="unipolar2bipolar_1" outlet="o"/>
@@ -1081,6 +1096,7 @@ void loop(void)
          <dest obj="mux_13" inlet="s"/>
          <dest obj="mux_14" inlet="s"/>
          <dest obj="mux_15" inlet="s"/>
+         <dest obj="mux_16" inlet="s"/>
       </net>
       <net>
          <source obj="OLED A1" outlet="inlet"/>
@@ -1258,12 +1274,16 @@ void loop(void)
          <dest obj="out_stereo_vol_1" inlet="right"/>
       </net>
       <net>
-         <source obj="i_1" outlet="out"/>
-         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i0_"/>
+         <source obj="OLED D3" outlet="inlet"/>
+         <dest obj="mux_16" inlet="i2"/>
       </net>
       <net>
-         <source obj="dial_1" outlet="out"/>
-         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i1_"/>
+         <source obj="c_16" outlet="out"/>
+         <dest obj="mux_16" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="mux_16" outlet="o"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="OLEDD3_"/>
       </net>
    </nets>
    <settings>
@@ -1276,9 +1296,9 @@ void loop(void)
    </settings>
    <notes><![CDATA[]]></notes>
    <windowPos>
-      <x>586</x>
+      <x>425</x>
       <y>14</y>
-      <width>909</width>
+      <width>1070</width>
       <height>1017</height>
    </windowPos>
 </patch-1.0>

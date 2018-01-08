@@ -22,8 +22,14 @@
          <charptr32 name="OLEDD1_"/>
          <charptr32 name="OLEDD2_"/>
          <charptr32 name="OLEDD3_"/>
-         <int32 name="i0_"/>
+         <frac32.bipolar name="i0_"/>
          <frac32.bipolar name="i1_"/>
+         <frac32.bipolar name="i2_"/>
+         <frac32.bipolar name="i3_"/>
+         <frac32.bipolar name="i4_"/>
+         <frac32.bipolar name="i5_"/>
+         <frac32.bipolar name="i6_"/>
+         <frac32.bipolar name="i7_"/>
       </inlets>
       <outlets>
          <frac32 name="out1_" description="out1"/>
@@ -61,7 +67,7 @@ int32_t Page;
 int32_t LEDcolor;
 int32_t LEDmode;
 int32_t stepNum;
-int32_t stepIntensity,in2,reverseKnobs, i0,i1;
+int32_t stepIntensity,in2,reverseKnobs, inBP[8];
 int32_t out1,out2,out3;
 
 int32_t foo;
@@ -91,8 +97,12 @@ out2=0;
 out3=0;
 u8Count=0;
 PORCount=0;
-i1=0;
 
+
+for (int i=0; i<8; i++)
+{
+	inBP[i] = 0;
+}
 
 for (int y=0; y<2; y++)
 {
@@ -128,8 +138,15 @@ outlet_knbB5__ = this->knb[1][5];
 outlet_knbB6__ = this->knb[1][6];
 outlet_knbB7__ = this->knb[1][7];
 this->reverseKnobs  = inlet_reverseKnobs__;
-this->i0 = inlet_i0__;
-this->i1 = inlet_i1__;
+this->inBP[0] = inlet_i0__;
+this->inBP[1] = inlet_i1__;
+this->inBP[2] = inlet_i2__;
+this->inBP[3] = inlet_i3__;
+this->inBP[4] = inlet_i4__;
+this->inBP[5] = inlet_i5__;
+this->inBP[6] = inlet_i6__;
+this->inBP[7] = inlet_i7__;
+
 
 
 

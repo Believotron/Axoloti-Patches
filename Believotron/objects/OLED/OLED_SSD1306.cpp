@@ -823,7 +823,7 @@ void OLEDDisplayCartesianBuffer(int iDevice)
 
 
 
-void OLEDDisplayBipolar(uint8_t iDevice, int32_t iVal, uint8_t iRow, uint8_t iBaseAddr, uint8_t iStrLen)
+void OLEDDisplayBipolar(uint8_t iDevice, int32_t iVal, uint8_t iRow, uint8_t iBaseAddr)
 {
     char itoaBuff[16];
     char cFormat[8];
@@ -834,7 +834,7 @@ void OLEDDisplayBipolar(uint8_t iDevice, int32_t iVal, uint8_t iRow, uint8_t iBa
 
     iRoot = iVal / 2097100;
 
-    iStrLen = 3;
+    uint8_t iStrLen = 3;
 
     strcpy (cFormat, "%+0");
     sprintf(cMetaFormat, "%d", iStrLen); // Creates the format string
@@ -902,12 +902,41 @@ void OLEDCountUp()
 
     //OLEDDisplayFloatAt(iDevice, iCount, iRow, iCol, iCharacteristicLen, iMantissaLen); broken
 
-    //OLEDDisplayIntAt(iDevice, iCount, iRow, iCol, iStrLen);
+    OLEDDisplayIntAt(iDevice, iCount, iRow, iCol, iStrLen);
 
     //OLEDDisplayIntAt(iDevice, i1, iRow, iCol, iStrLen);
-    OLEDDisplayBipolar(iDevice, i1, iRow, iCol, iStrLen);
+
 
     if (++iCount >=5999){ iCount = 0; }
+}
+
+void OLEDTestBipolarDisplay()
+{
+
+    // int i=0;
+    //     OLEDDisplayBipolar(i, inBP[2  ], 3, 0);
+    //     OLEDDisplayBipolar(i, inBP[2+1], 3, 10);
+
+
+    for (int i=0; i<4; i++)
+    {
+        OLEDDisplayBipolar(i, inBP[i*2  ], 3, 0);
+        OLEDDisplayBipolar(i, inBP[i*2+1], 3, 10);
+    }
+
+
+
+    // OLEDDisplayBipolar(1, i1, 3, 0);
+    // OLEDDisplayBipolar(1, i1, 3, 10);
+    //
+    // OLEDDisplayBipolar(2, i1, 3, 0);
+    // OLEDDisplayBipolar(2, i1, 3, 10);
+    // OLEDDisplayBipolar(3, i1, 3, 0);
+
+
+
+    //OLEDDisplayBipolar(3, i1, 3, 10);
+
 }
 
 

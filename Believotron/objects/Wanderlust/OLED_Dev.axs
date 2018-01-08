@@ -244,6 +244,12 @@
       </params>
       <attribs/>
    </obj>
+   <obj type="ctrl/dial b" uuid="862e7d7f29093cb1ce4aed72244d118ad4d46692" name="dial_1" x="1134" y="1652">
+      <params>
+         <frac32.s.map name="value" value="19.200000762939453"/>
+      </params>
+      <attribs/>
+   </obj>
    <obj type="logic/inv" uuid="2bd44b865d3b63ff9b80862242bf5be779e3ad5" name="inv_2" x="868" y="1666">
       <params/>
       <attribs/>
@@ -254,6 +260,12 @@
    </obj>
    <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="knob_top_6" x="1680" y="1680">
       <params/>
+      <attribs/>
+   </obj>
+   <obj type="ctrl/i" uuid="a3786816db6ea5bc6ac4193a5cccdb2c83b83496" name="i_1" x="1036" y="1694">
+      <params>
+         <int32 name="value" value="1"/>
+      </params>
       <attribs/>
    </obj>
    <obj type="I2C/configI2C" uuid="5ec2ea89-c080-4da0-bcb5-15f58174cc1a" name="configI2C_1" x="1288" y="1694">
@@ -1245,6 +1257,14 @@ void loop(void)
          <dest obj="out_stereo_vol_1" inlet="left"/>
          <dest obj="out_stereo_vol_1" inlet="right"/>
       </net>
+      <net>
+         <source obj="i_1" outlet="out"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i0_"/>
+      </net>
+      <net>
+         <source obj="dial_1" outlet="out"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i1_"/>
+      </net>
    </nets>
    <settings>
       <subpatchmode>no</subpatchmode>
@@ -1256,9 +1276,9 @@ void loop(void)
    </settings>
    <notes><![CDATA[]]></notes>
    <windowPos>
-      <x>654</x>
-      <y>16</y>
-      <width>1516</width>
-      <height>1016</height>
+      <x>586</x>
+      <y>14</y>
+      <width>909</width>
+      <height>1017</height>
    </windowPos>
 </patch-1.0>

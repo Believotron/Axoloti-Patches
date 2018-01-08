@@ -22,6 +22,8 @@
          <charptr32 name="OLEDD1_"/>
          <charptr32 name="OLEDD2_"/>
          <charptr32 name="OLEDD3_"/>
+         <int32 name="i0_"/>
+         <frac32.bipolar name="i1_"/>
       </inlets>
       <outlets>
          <frac32 name="out1_" description="out1"/>
@@ -59,8 +61,11 @@ int32_t Page;
 int32_t LEDcolor;
 int32_t LEDmode;
 int32_t stepNum;
-int32_t stepIntensity,in2,reverseKnobs;
+int32_t stepIntensity,in2,reverseKnobs, i0,i1;
 int32_t out1,out2,out3;
+
+int32_t foo;
+
 int32_t knb[2][8];
 attr_script
 msg_t ThreadX2(){
@@ -86,6 +91,7 @@ out2=0;
 out3=0;
 u8Count=0;
 PORCount=0;
+i1=0;
 
 
 for (int y=0; y<2; y++)
@@ -122,6 +128,8 @@ outlet_knbB5__ = this->knb[1][5];
 outlet_knbB6__ = this->knb[1][6];
 outlet_knbB7__ = this->knb[1][7];
 this->reverseKnobs  = inlet_reverseKnobs__;
+this->i0 = inlet_i0__;
+this->i1 = inlet_i1__;
 
 
 

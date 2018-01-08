@@ -822,6 +822,48 @@ void OLEDDisplayCartesianBuffer(int iDevice)
 }
 
 
+
+void OLEDDisplayBipolar(uint8_t iDevice, int32_t iVal, uint8_t iRow, uint8_t iBaseAddr, uint8_t iStrLen)
+{
+    char itoaBuff[16];
+    char cFormat[8];
+    char cMetaFormat[8];
+    char cBuff[1];
+
+    int32_t iRoot, iDecimal;
+
+    iRoot = iVal / 2097100;
+
+    iStrLen = 3;
+
+    strcpy (cFormat, "%+0");
+    sprintf(cMetaFormat, "%d", iStrLen); // Creates the format string
+    strcat (cFormat, cMetaFormat);
+    strcat (cFormat, "d");
+    //sprintf(itoaBuff, "%03d", iVal);
+    sprintf(itoaBuff, cFormat, iRoot);
+
+    iDecimal = iVal / 209710;
+
+    sprintf(cFormat, "%d", iDecimal);
+
+    strcat( itoaBuff, ".");
+
+    cBuff[0] = cFormat[ strlen(cFormat)-1 ];
+    strcat( itoaBuff, cBuff );
+
+    iBaseAddr += iRow*16;
+
+    iStrLen += 2;
+
+    for (int i=0; i<iStrLen; i++) { OLEDTextBuff[iBaseAddr+i] = itoaBuff[i];  }
+
+    OLED_Print_ParamLeft(iDevice);
+
+    OLEDDisplayCartesianBuffer(iDevice);
+}
+
+
 void OLEDDisplayIntAt(uint8_t iDevice, int32_t iVal, uint8_t iRow, uint8_t iBaseAddr, uint8_t iStrLen)
 {
     char itoaBuff[16];
@@ -840,11 +882,6 @@ void OLEDDisplayIntAt(uint8_t iDevice, int32_t iVal, uint8_t iRow, uint8_t iBase
 
     for (int i=0; i<iStrLen; i++) { OLEDTextBuff[iBaseAddr+i] = itoaBuff[i];  }
 
-
-    // OLEDTextBuff[iBaseAddr+0] = itoaBuff[0];
-    // OLEDTextBuff[iBaseAddr+1] = itoaBuff[1];
-    // OLEDTextBuff[iBaseAddr+2] = itoaBuff[2];
-
     OLED_Print_ParamLeft(iDevice);
 
     OLEDDisplayCartesianBuffer(iDevice);
@@ -860,8 +897,15 @@ void OLEDCountUp()
     uint8_t iCol    = 4;
     uint8_t iStrLen = 8;
 
+    uint8_t iCharacteristicLen = 3;
+    uint8_t iMantissaLen       = 3;
 
-    OLEDDisplayIntAt(iDevice, iCount, iRow, iCol, iStrLen);
+    //OLEDDisplayFloatAt(iDevice, iCount, iRow, iCol, iCharacteristicLen, iMantissaLen); broken
+
+    //OLEDDisplayIntAt(iDevice, iCount, iRow, iCol, iStrLen);
+
+    //OLEDDisplayIntAt(iDevice, i1, iRow, iCol, iStrLen);
+    OLEDDisplayBipolar(iDevice, i1, iRow, iCol, iStrLen);
 
     if (++iCount >=5999){ iCount = 0; }
 }

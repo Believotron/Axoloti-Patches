@@ -910,40 +910,45 @@ void OLEDCountUp()
     if (++iCount >=5999){ iCount = 0; }
 }
 
-void OLEDTestBipolarDisplay()
+
+#define BIPOLAR_IN_USER 0
+#define BIPOLAR_IN_KNOB 1
+#define BIPOLAR_IN_JOYS 2
+
+
+void OLEDClearRow(uint8_t iDevice, uint8_t iRow)
 {
 
-    // int i=0;
-    //     OLEDDisplayBipolar(i, inBP[2  ], 3, 0);
-    //     OLEDDisplayBipolar(i, inBP[2+1], 3, 10);
+
+    for (uint8_t iChar=0; iChar<16; iChar++ )
+    {
+        uint8_t iOffset = (iRow * 16) + iChar;
+        OLEDTextBuff[iDevice][iOffset] = ' ';
+    }
+    OLED_Print_ParamLeft(iDevice);
+    OLEDDisplayCartesianBuffer(iDevice);
+}
+
+void OLEDDisplayBipolarRow(uint8_t iRow, uint8_t iSource)
+{
+
+    for (int iDisplay=0; iDisplay<NUM_OLED_DISPLAYS; iDisplay++)
+    {
+        OLEDDisplayBipolar(iDisplay, inBP[iSource][iDisplay*2  ], iRow,  0);
+        OLEDDisplayBipolar(iDisplay, inBP[iSource][iDisplay*2+1], iRow, 10);
+    }
+}
 
 
+
+
+void OLEDTestBipolarDisplay()
+{
     for (int i=0; i<NUM_OLED_DISPLAYS; i++)
     {
-        OLEDDisplayBipolar(i, inBP[i*2  ], 3, 0);
-        OLEDDisplayBipolar(i, inBP[i*2+1], 3, 10);
+        OLEDDisplayBipolar(i, inBP[BIPOLAR_IN_USER][i*2  ], 3,  0);
+        OLEDDisplayBipolar(i, inBP[BIPOLAR_IN_USER][i*2+1], 3, 10);
     }
-
-
-    // for (int i=0; i<4; i++)
-    // {
-    //     OLEDDisplayBipolar(i, inBP[i*2  ], 3, 0);
-    //     OLEDDisplayBipolar(i, inBP[i*2+1], 3, 10);
-    // }
-
-
-
-    // OLEDDisplayBipolar(1, i1, 3, 0);
-    // OLEDDisplayBipolar(1, i1, 3, 10);
-    //
-    // OLEDDisplayBipolar(2, i1, 3, 0);
-    // OLEDDisplayBipolar(2, i1, 3, 10);
-    // OLEDDisplayBipolar(3, i1, 3, 0);
-
-
-
-    //OLEDDisplayBipolar(3, i1, 3, 10);
-
 }
 
 

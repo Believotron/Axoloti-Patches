@@ -524,25 +524,25 @@ void loop(void)
    <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_4" x="0" y="1946">
       <params/>
       <attribs>
-         <table attributeName="str" table="OLED Test (0,3)"/>
+         <table attributeName="str" table=""/>
       </attribs>
    </obj>
    <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_8" x="196" y="1946">
       <params/>
       <attribs>
-         <table attributeName="str" table="OLED Test (1,3)"/>
+         <table attributeName="str" table=""/>
       </attribs>
    </obj>
    <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_12" x="392" y="1946">
       <params/>
       <attribs>
-         <table attributeName="str" table="OLED Test (2,3)"/>
+         <table attributeName="str" table=""/>
       </attribs>
    </obj>
    <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_16" x="574" y="1946">
       <params/>
       <attribs>
-         <table attributeName="str" table="OLED Test (3,3)"/>
+         <table attributeName="str" table=""/>
       </attribs>
    </obj>
    <obj type="mux/mux 2" uuid="777491e645978e331fcbab6610f52c1aaa5ade0e" name="mux_4" x="1148" y="1960">
@@ -1296,8 +1296,8 @@ void loop(void)
    </settings>
    <notes><![CDATA[]]></notes>
    <windowPos>
-      <x>425</x>
-      <y>14</y>
+      <x>277</x>
+      <y>175</y>
       <width>1070</width>
       <height>1017</height>
    </windowPos>

@@ -425,7 +425,7 @@ uint16_t CharToIndex(char charval)
 
 
 #define NUM_OLED_CHARS 64
-char OLEDTextBuff[NUM_OLED_CHARS];
+char OLEDTextBuff[NUM_OLED_DISPLAYS][NUM_OLED_CHARS];
 void OLED_Print_Buff(uint8_t iDevice)
 {
 
@@ -435,11 +435,11 @@ void OLED_Print_Buff(uint8_t iDevice)
     {
         for (uint8_t iCol=0; iCol<16; iCol++)
         {
-            SetOLEDCharIndex( iCol, iRow, CharToIndex(OLEDTextBuff[iText]), iDevice );
+            SetOLEDCharIndex( iCol, iRow, CharToIndex(OLEDTextBuff[iDevice][iText]), iDevice );
 
             if ( iText < NUM_OLED_CHARS - 1)
             {
-                if ( OLEDTextBuff[iText+1] == '\0' )
+                if ( OLEDTextBuff[iDevice][iText+1] == '\0' )
                 {iBreak=1; break;}
             }
             iText++;
@@ -455,9 +455,9 @@ void OLED_Print_ParamLeft(uint8_t iDevice)
 }
 
 
-void OLED_Print_ParamRight(uint8_t iChan)
+void OLED_Print_ParamRight(uint8_t iDevice)
 {
-    uint8_t iStrLen = strlen(OLEDTextBuff);
+    uint8_t iStrLen = strlen(OLEDTextBuff[iDevice]);
     iStrLen--;
     uint8_t iText=0;
     uint8_t iBreak=0;
@@ -465,9 +465,9 @@ void OLED_Print_ParamRight(uint8_t iChan)
     {
         for (uint8_t iCol=15; iCol>=0; iCol--)
         {
-            SetOLEDCharIndex( iCol, iRow, CharToIndex(OLEDTextBuff[iStrLen - iText]), iChan );
+            SetOLEDCharIndex( iCol, iRow, CharToIndex(OLEDTextBuff[iDevice][iStrLen - iText]), iDevice );
 
-            if ( iText < NUM_OLED_CHARS - 1) { if ( OLEDTextBuff[iText+1] == '\0' ) { iBreak=1; break; } }
+            if ( iText < NUM_OLED_CHARS - 1) { if ( OLEDTextBuff[iDevice][iText+1] == '\0' ) { iBreak=1; break; } }
             iText++;
         }
         if (iBreak) break;
@@ -488,9 +488,9 @@ void OLED_Print_ValLeft(double dVal, uint8_t iDevice)
 
     for (uint8_t iCol=0; iCol<16; iCol++)
     {
-        SetOLEDCharIndex( iCol, 1, CharToIndex(OLEDTextBuff[iText]), iDevice );
+        SetOLEDCharIndex( iCol, 1, CharToIndex(OLEDTextBuff[iDevice][iText]), iDevice );
 
-        if ( iText < NUM_OLED_CHARS - 1) { if ( OLEDTextBuff[iText+1] == '\0' ) { break; } }
+        if ( iText < NUM_OLED_CHARS - 1) { if ( OLEDTextBuff[iDevice][iText+1] == '\0' ) { break; } }
         iText++;
     }
 }
@@ -856,7 +856,7 @@ void OLEDDisplayBipolar(uint8_t iDevice, int32_t iVal, uint8_t iRow, uint8_t iBa
 
     iStrLen += 2;
 
-    for (int i=0; i<iStrLen; i++) { OLEDTextBuff[iBaseAddr+i] = itoaBuff[i];  }
+    for (int i=0; i<iStrLen; i++) { OLEDTextBuff[iDevice][iBaseAddr+i] = itoaBuff[i];  }
 
     OLED_Print_ParamLeft(iDevice);
 
@@ -880,7 +880,7 @@ void OLEDDisplayIntAt(uint8_t iDevice, int32_t iVal, uint8_t iRow, uint8_t iBase
 
     iBaseAddr += iRow*16;
 
-    for (int i=0; i<iStrLen; i++) { OLEDTextBuff[iBaseAddr+i] = itoaBuff[i];  }
+    for (int i=0; i<iStrLen; i++) { OLEDTextBuff[iDevice][iBaseAddr+i] = itoaBuff[i];  }
 
     OLED_Print_ParamLeft(iDevice);
 
@@ -890,7 +890,7 @@ void OLEDDisplayIntAt(uint8_t iDevice, int32_t iVal, uint8_t iRow, uint8_t iBase
 
 void OLEDCountUp()
 {
-    static int iCount=-50;
+    static int iCount=0;
 
     uint8_t iDevice = 0;
     uint8_t iRow    = 0;
@@ -918,11 +918,18 @@ void OLEDTestBipolarDisplay()
     //     OLEDDisplayBipolar(i, inBP[2+1], 3, 10);
 
 
-    for (int i=0; i<4; i++)
+    for (int i=0; i<NUM_OLED_DISPLAYS; i++)
     {
         OLEDDisplayBipolar(i, inBP[i*2  ], 3, 0);
         OLEDDisplayBipolar(i, inBP[i*2+1], 3, 10);
     }
+
+
+    // for (int i=0; i<4; i++)
+    // {
+    //     OLEDDisplayBipolar(i, inBP[i*2  ], 3, 0);
+    //     OLEDDisplayBipolar(i, inBP[i*2+1], 3, 10);
+    // }
 
 
 
@@ -991,7 +998,7 @@ void OLED_setstring()
         for(int iRow = 0; iRow < NUM_TEXT_ROWS; iRow++ )
         {
             pad16(OLEDTxt[iDevice][iRow]);
-            strncpy(&OLEDTextBuff[0+iOffset],  OLEDTxt[iDevice][iRow], 16);
+            strncpy(&OLEDTextBuff[iDevice][0+iOffset],  OLEDTxt[iDevice][iRow], 16);
             iOffset+=16;
         }
         OLED_Print_ParamLeft(iDevice);
@@ -1024,8 +1031,8 @@ void OLED_checkerboardTest()
         for(int iRow = 0; iRow < NUM_TEXT_ROWS; iRow++ )
         {
             pad16(OLEDTxt[iDevice][iRow]);
-            if (iParity == 0) { strncpy(&OLEDTextBuff[0+iOffset],  "AAAA5555AAAA5555", 16); }
-            else              { strncpy(&OLEDTextBuff[0+iOffset],  "5555AAAA5555AAAA", 16); }
+            if (iParity == 0) { strncpy(&OLEDTextBuff[iDevice][0+iOffset],  "AAAA5555AAAA5555", 16); }
+            else              { strncpy(&OLEDTextBuff[iDevice][0+iOffset],  "5555AAAA5555AAAA", 16); }
             iOffset+=16;
         }
         OLED_Print_ParamLeft(iDevice);
@@ -1038,25 +1045,25 @@ void OLED_checkerboardTest()
 void OLED_Sandbox()
 {
     //strcpy(OLEDTextBuff, "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz");
-    strcpy(OLEDTextBuff, "Attack");
+    strcpy(OLEDTextBuff[0], "Attack");
     OLED_Print_ParamLeft(0);
-    strcpy(OLEDTextBuff, "Decay");
+    strcpy(OLEDTextBuff[0], "Decay");
     OLED_Print_ParamRight(0);
     //OLED_Print_ValLeft(100.00, 0);
 
-    strcpy(OLEDTextBuff, "Sustain");
+    strcpy(OLEDTextBuff[1], "Sustain");
     OLED_Print_ParamLeft(1);
-    strcpy(OLEDTextBuff, "Release");
+    strcpy(OLEDTextBuff[1], "Release");
     OLED_Print_ParamRight(1);
 
-    strcpy(OLEDTextBuff, "Mod1");
+    strcpy(OLEDTextBuff[2], "Mod1");
     OLED_Print_ParamLeft(2);
-    strcpy(OLEDTextBuff, "Mod2");
+    strcpy(OLEDTextBuff[2], "Mod2");
     OLED_Print_ParamRight(2);
 
-    strcpy(OLEDTextBuff, "Pitch");
+    strcpy(OLEDTextBuff[3], "Pitch");
     OLED_Print_ParamLeft(3);
-    strcpy(OLEDTextBuff, "Volume");
+    strcpy(OLEDTextBuff[3], "Volume");
     OLED_Print_ParamRight(3);
     //OLED_FontTest();
 }

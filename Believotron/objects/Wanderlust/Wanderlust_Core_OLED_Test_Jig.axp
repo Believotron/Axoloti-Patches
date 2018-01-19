@@ -1,0 +1,630 @@
+<patch-1.0 appVersion="1.0.12">
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_2" x="1428" y="84">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_5" x="1680" y="84">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_9" x="1946" y="84">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_10" x="2198" y="84">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_22" x="1148" y="112">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="ctrl/dial b" uuid="862e7d7f29093cb1ce4aed72244d118ad4d46692" name="dial_2" x="14" y="140">
+      <params>
+         <frac32.s.map name="value" value="-12.500000476837158"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="string/StringBiploar2CH" uuid="a1170f7b-3592-43a5-bdff-c2c8947488ef" name="StringBiploar2CH_1" x="154" y="140">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_5" x="336" y="140">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="JIG Test (1,0)"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_9" x="532" y="140">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="JIG Test (2,0)"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_13" x="728" y="140">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="JIG Test (3,0)"/>
+      </attribs>
+   </obj>
+   <obj type="Wanderlust_core_V1" uuid="22fef3f4-f318-4556-99a0-c3684cf57d13" name="Wanderlust_core_V1_1" x="952" y="140">
+      <params>
+         <bool32.tgl name="Reverse Knobs" value="0"/>
+         <bool32.tgl name="Default_OLED_TXT" value="0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_1" x="1358" y="140">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_3" x="1498" y="140">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_6" x="1610" y="140">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_7" x="1750" y="140">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_11" x="1876" y="140">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_12" x="2016" y="140">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_17" x="2128" y="140">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_18" x="2268" y="140">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/+1" uuid="6b958b82fafa8d61216203d28f9f0e4cd27fa2a6" name="+1_1" x="98" y="154">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_4" x="1428" y="196">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_8" x="1680" y="196">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_19" x="1946" y="196">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_20" x="2198" y="196">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_6" x="336" y="210">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="JIG Test (1,1)"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_10" x="532" y="210">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="JIG Test (2,1)"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_14" x="728" y="210">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="JIG Test (3,1)"/>
+      </attribs>
+   </obj>
+   <obj type="math/+1" uuid="6b958b82fafa8d61216203d28f9f0e4cd27fa2a6" name="+1_2" x="98" y="238">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="string/StringBiploar2CH" uuid="a1170f7b-3592-43a5-bdff-c2c8947488ef" name="StringBiploar2CH_2" x="154" y="238">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/+1" uuid="6b958b82fafa8d61216203d28f9f0e4cd27fa2a6" name="+1_3" x="98" y="280">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_7" x="336" y="280">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="JIG Test (1,2)"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_11" x="532" y="280">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="JIG Test (2,2)"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_15" x="728" y="280">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="JIG Test (3,2)"/>
+      </attribs>
+   </obj>
+   <obj type="disp/dial b" uuid="9ffed04e6a3052d9001eda83bae7024cb6d17037" name="dial_4" x="1358" y="294">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/+1" uuid="6b958b82fafa8d61216203d28f9f0e4cd27fa2a6" name="+1_4" x="98" y="336">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="string/StringBiploar2CH" uuid="a1170f7b-3592-43a5-bdff-c2c8947488ef" name="StringBiploar2CH_3" x="154" y="336">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_8" x="336" y="350">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="JIG Test (1,3)"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_12" x="532" y="350">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="JIG Test (2,3)"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_16" x="728" y="350">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="JIG Test (3,3)"/>
+      </attribs>
+   </obj>
+   <obj type="math/+1" uuid="6b958b82fafa8d61216203d28f9f0e4cd27fa2a6" name="+1_5" x="98" y="378">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/dial b" uuid="9ffed04e6a3052d9001eda83bae7024cb6d17037" name="dial_1" x="1386" y="406">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/dial p" uuid="44fd18b562e434b3230441681132dbeabb15cdc5" name="dial_10" x="1428" y="406">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/dial p" uuid="44fd18b562e434b3230441681132dbeabb15cdc5" name="dial_11" x="1498" y="406">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/dial p" uuid="44fd18b562e434b3230441681132dbeabb15cdc5" name="dial_12" x="1568" y="406">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/dial p" uuid="44fd18b562e434b3230441681132dbeabb15cdc5" name="dial_13" x="1638" y="406">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/dial p" uuid="44fd18b562e434b3230441681132dbeabb15cdc5" name="dial_14" x="1708" y="406">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/dial p" uuid="44fd18b562e434b3230441681132dbeabb15cdc5" name="dial_15" x="1778" y="406">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/dial p" uuid="44fd18b562e434b3230441681132dbeabb15cdc5" name="dial_16" x="1848" y="406">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/+1" uuid="6b958b82fafa8d61216203d28f9f0e4cd27fa2a6" name="+1_6" x="98" y="434">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="string/StringBiploar2CH" uuid="a1170f7b-3592-43a5-bdff-c2c8947488ef" name="StringBiploar2CH_4" x="154" y="434">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/+1" uuid="6b958b82fafa8d61216203d28f9f0e4cd27fa2a6" name="+1_7" x="98" y="476">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/dial b" uuid="9ffed04e6a3052d9001eda83bae7024cb6d17037" name="dial_3" x="1442" y="574">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/dial b" uuid="9ffed04e6a3052d9001eda83bae7024cb6d17037" name="dial_24" x="1638" y="574">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/dial b" uuid="9ffed04e6a3052d9001eda83bae7024cb6d17037" name="dial_26" x="1834" y="574">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/dial b" uuid="9ffed04e6a3052d9001eda83bae7024cb6d17037" name="dial_29" x="2030" y="574">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/dial b" uuid="9ffed04e6a3052d9001eda83bae7024cb6d17037" name="dial_5" x="1372" y="658">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_13" x="1442" y="658">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/dial b" uuid="9ffed04e6a3052d9001eda83bae7024cb6d17037" name="dial_25" x="1568" y="658">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_14" x="1638" y="658">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/dial b" uuid="9ffed04e6a3052d9001eda83bae7024cb6d17037" name="dial_27" x="1764" y="658">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_15" x="1834" y="658">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/dial b" uuid="9ffed04e6a3052d9001eda83bae7024cb6d17037" name="dial_28" x="1960" y="658">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_16" x="2030" y="658">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/bool" uuid="a0ee71d48208b71752cbb8c05e55145106ef3946" name="bool_21" x="1400" y="980">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="gpio/in/analog" uuid="1c0c845ed2d7e06ae5f377ba13d9d09f4747ac87" name="analog_2" x="1386" y="1386">
+      <params/>
+      <attribs>
+         <combo attributeName="channel" selection="PC1 (ADC1_IN11)"/>
+      </attribs>
+   </obj>
+   <obj type="disp/dial b" uuid="9ffed04e6a3052d9001eda83bae7024cb6d17037" name="dial_6" x="1666" y="1400">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="joyLX" x="1764" y="1400">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="gpio/in/analog" uuid="1c0c845ed2d7e06ae5f377ba13d9d09f4747ac87" name="analog_1" x="1386" y="1484">
+      <params/>
+      <attribs>
+         <combo attributeName="channel" selection="PC4 (ADC1_IN14)"/>
+      </attribs>
+   </obj>
+   <obj type="disp/dial b" uuid="9ffed04e6a3052d9001eda83bae7024cb6d17037" name="dial_7" x="1666" y="1484">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="joyLY" x="1764" y="1484">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="gpio/in/analog" uuid="1c0c845ed2d7e06ae5f377ba13d9d09f4747ac87" name="analog_4" x="1386" y="1568">
+      <params/>
+      <attribs>
+         <combo attributeName="channel" selection="PC2 (ADC1_IN12)"/>
+      </attribs>
+   </obj>
+   <obj type="disp/dial b" uuid="9ffed04e6a3052d9001eda83bae7024cb6d17037" name="dial_8" x="1666" y="1582">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="joyRX" x="1764" y="1582">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="gpio/in/analog" uuid="1c0c845ed2d7e06ae5f377ba13d9d09f4747ac87" name="analog_3" x="1386" y="1638">
+      <params/>
+      <attribs>
+         <combo attributeName="channel" selection="PC3 (ADC1_IN13)"/>
+      </attribs>
+   </obj>
+   <obj type="disp/dial b" uuid="9ffed04e6a3052d9001eda83bae7024cb6d17037" name="dial_9" x="1666" y="1652">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="joyRY" x="1764" y="1652">
+      <params/>
+      <attribs/>
+   </obj>
+   <nets>
+      <net>
+         <source obj="analog_1" outlet="out"/>
+         <dest obj="dial_7" inlet="in"/>
+         <dest obj="joyLY" inlet="outlet"/>
+      </net>
+      <net>
+         <source obj="analog_2" outlet="out"/>
+         <dest obj="dial_6" inlet="in"/>
+         <dest obj="joyLX" inlet="outlet"/>
+      </net>
+      <net>
+         <source obj="analog_3" outlet="out"/>
+         <dest obj="dial_9" inlet="in"/>
+         <dest obj="joyRY" inlet="outlet"/>
+      </net>
+      <net>
+         <source obj="analog_4" outlet="out"/>
+         <dest obj="dial_8" inlet="in"/>
+         <dest obj="joyRX" inlet="outlet"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="knob_top_1"/>
+         <dest obj="dial_10" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="knob_top_2"/>
+         <dest obj="dial_11" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="knob_top_3"/>
+         <dest obj="dial_12" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="knob_top_4"/>
+         <dest obj="dial_13" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="knob_top_5"/>
+         <dest obj="dial_14" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="knob_top_6"/>
+         <dest obj="dial_15" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="knob_top_7"/>
+         <dest obj="dial_16" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY0_X"/>
+         <dest obj="dial_5" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY0_Y"/>
+         <dest obj="dial_3" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY1_X"/>
+         <dest obj="dial_25" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY1_Y"/>
+         <dest obj="dial_24" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY2_X"/>
+         <dest obj="dial_27" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY2_Y"/>
+         <dest obj="dial_26" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY3_X"/>
+         <dest obj="dial_28" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY3_Y"/>
+         <dest obj="dial_29" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="Volume"/>
+         <dest obj="dial_4" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY0_BTN"/>
+         <dest obj="bool_13" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY1_BTN"/>
+         <dest obj="bool_14" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY2_BTN"/>
+         <dest obj="bool_15" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY3_BTN"/>
+         <dest obj="bool_16" inlet="in"/>
+      </net>
+      <net>
+         <source obj="c_5" outlet="out"/>
+         <dest obj="Wanderlust_core_V1_1" inlet="OLED B0"/>
+      </net>
+      <net>
+         <source obj="c_6" outlet="out"/>
+         <dest obj="Wanderlust_core_V1_1" inlet="OLED B1"/>
+      </net>
+      <net>
+         <source obj="c_7" outlet="out"/>
+         <dest obj="Wanderlust_core_V1_1" inlet="OLED B2"/>
+      </net>
+      <net>
+         <source obj="c_8" outlet="out"/>
+         <dest obj="Wanderlust_core_V1_1" inlet="OLED B3"/>
+      </net>
+      <net>
+         <source obj="c_9" outlet="out"/>
+         <dest obj="Wanderlust_core_V1_1" inlet="OLED C0"/>
+      </net>
+      <net>
+         <source obj="c_10" outlet="out"/>
+         <dest obj="Wanderlust_core_V1_1" inlet="OLED C1"/>
+      </net>
+      <net>
+         <source obj="c_11" outlet="out"/>
+         <dest obj="Wanderlust_core_V1_1" inlet="OLED C2"/>
+      </net>
+      <net>
+         <source obj="c_12" outlet="out"/>
+         <dest obj="Wanderlust_core_V1_1" inlet="OLED C3"/>
+      </net>
+      <net>
+         <source obj="c_13" outlet="out"/>
+         <dest obj="Wanderlust_core_V1_1" inlet="OLED D0"/>
+      </net>
+      <net>
+         <source obj="c_14" outlet="out"/>
+         <dest obj="Wanderlust_core_V1_1" inlet="OLED D1"/>
+      </net>
+      <net>
+         <source obj="c_15" outlet="out"/>
+         <dest obj="Wanderlust_core_V1_1" inlet="OLED D2"/>
+      </net>
+      <net>
+         <source obj="c_16" outlet="out"/>
+         <dest obj="Wanderlust_core_V1_1" inlet="OLED D3"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="knob_top_0"/>
+         <dest obj="dial_1" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY0_UP"/>
+         <dest obj="bool_2" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY0_DN"/>
+         <dest obj="bool_4" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY0_RT"/>
+         <dest obj="bool_3" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY0_LT"/>
+         <dest obj="bool_1" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY1_UP"/>
+         <dest obj="bool_5" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY1_DN"/>
+         <dest obj="bool_8" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY1_RT"/>
+         <dest obj="bool_7" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY1_LT"/>
+         <dest obj="bool_6" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY2_UP"/>
+         <dest obj="bool_9" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY2_DN"/>
+         <dest obj="bool_19" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY2_RT"/>
+         <dest obj="bool_12" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY2_LT"/>
+         <dest obj="bool_11" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY3_UP"/>
+         <dest obj="bool_10" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY3_DN"/>
+         <dest obj="bool_20" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY3_RT"/>
+         <dest obj="bool_18" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="JOY3_LT"/>
+         <dest obj="bool_17" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Wanderlust_core_V1_1" outlet="POR"/>
+         <dest obj="bool_22" inlet="in"/>
+      </net>
+      <net>
+         <source obj="dial_2" outlet="out"/>
+         <dest obj="StringBiploar2CH_1" inlet="i0_"/>
+         <dest obj="+1_1" inlet="a"/>
+      </net>
+      <net>
+         <source obj="+1_1" outlet="result"/>
+         <dest obj="StringBiploar2CH_1" inlet="i1_"/>
+         <dest obj="+1_2" inlet="a"/>
+      </net>
+      <net>
+         <source obj="+1_2" outlet="result"/>
+         <dest obj="StringBiploar2CH_2" inlet="i0_"/>
+         <dest obj="+1_3" inlet="a"/>
+      </net>
+      <net>
+         <source obj="+1_3" outlet="result"/>
+         <dest obj="StringBiploar2CH_2" inlet="i1_"/>
+         <dest obj="+1_4" inlet="a"/>
+      </net>
+      <net>
+         <source obj="+1_4" outlet="result"/>
+         <dest obj="StringBiploar2CH_3" inlet="i0_"/>
+         <dest obj="+1_5" inlet="a"/>
+      </net>
+      <net>
+         <source obj="+1_5" outlet="result"/>
+         <dest obj="StringBiploar2CH_3" inlet="i1_"/>
+         <dest obj="+1_6" inlet="a"/>
+      </net>
+      <net>
+         <source obj="+1_6" outlet="result"/>
+         <dest obj="StringBiploar2CH_4" inlet="i0_"/>
+         <dest obj="+1_7" inlet="a"/>
+      </net>
+      <net>
+         <source obj="+1_7" outlet="result"/>
+         <dest obj="StringBiploar2CH_4" inlet="i1_"/>
+      </net>
+      <net>
+         <source obj="StringBiploar2CH_1" outlet="out"/>
+         <dest obj="Wanderlust_core_V1_1" inlet="OLED A0"/>
+      </net>
+      <net>
+         <source obj="StringBiploar2CH_2" outlet="out"/>
+         <dest obj="Wanderlust_core_V1_1" inlet="OLED A1"/>
+      </net>
+      <net>
+         <source obj="StringBiploar2CH_3" outlet="out"/>
+         <dest obj="Wanderlust_core_V1_1" inlet="OLED A2"/>
+      </net>
+      <net>
+         <source obj="StringBiploar2CH_4" outlet="out"/>
+         <dest obj="Wanderlust_core_V1_1" inlet="OLED A3"/>
+      </net>
+   </nets>
+   <settings>
+      <subpatchmode>no</subpatchmode>
+   </settings>
+   <notes><![CDATA[]]></notes>
+   <windowPos>
+      <x>268</x>
+      <y>96</y>
+      <width>1514</width>
+      <height>1014</height>
+   </windowPos>
+</patch-1.0>

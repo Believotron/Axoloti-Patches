@@ -30,6 +30,7 @@
          <frac32.bipolar name="i5_"/>
          <frac32.bipolar name="i6_"/>
          <frac32.bipolar name="i7_"/>
+         <bool32 name="enableBipolarRow_"/>
       </inlets>
       <outlets>
          <frac32 name="out1_" description="out1"/>
@@ -72,7 +73,7 @@ int32_t Page;
 int32_t LEDcolor;
 int32_t LEDmode;
 int32_t stepNum;
-int32_t stepIntensity,in2,reverseKnobs, inBP[3][8], bipolarInUserRow;
+int32_t stepIntensity,in2,reverseKnobs, inBP[3][8], bipolarInUserRow, bBipolarDisplayEnable;
 int32_t out1,out2,out3;
 
 int32_t foo;
@@ -168,6 +169,7 @@ this->bipolarInUserRow = param_BipolarUserRow;
 
 
 
+this->bBipolarDisplayEnable = inlet_enableBipolarRow__;
 
 
 //if(u8Count < 10) // have to do it the second time, bc the txt won't fully load on the first frame

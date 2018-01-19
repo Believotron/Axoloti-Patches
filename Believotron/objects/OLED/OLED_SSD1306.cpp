@@ -100,6 +100,8 @@ uint8_t OLEDBuffer[NUM_OLED_DISPLAYS][OLED_BUFF_SIZE];
 
 uint8_t Cartesian_Byte_Array[NUM_OLED_DISPLAYS][CARTESIAN_BYTE_ARRAY_NUM_ROWS][CARTESIAN_BYTE_ARRAY_NUM_COLS];
 
+uint8_t OLEDUpdateMask[NUM_OLED_DISPLAYS][NUM_TEXT_ROWS];
+
 uint8_t Cartesian_Byte_Array_Checkerboard[CARTESIAN_BYTE_ARRAY_NUM_ROWS][CARTESIAN_BYTE_ARRAY_NUM_COLS] =
 {
     { 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55 },
@@ -550,11 +552,10 @@ void OLEDInit()
     // TBD add Cartesian Byte array clear
     for (int iDevice=0; iDevice<4; iDevice++)
     {
-
         OLEDBufferClear(iDevice); // TBD this line is causing a timeout sync
         SetOLEDChan(iDevice);
         OLEDInitCMD( iDevice,OLED_SSD1306_SWITCHCAPVCC,0x3C, FALSE ); // 30 ms
-
+        for (int iRow=0; iRow< NUM_TEXT_ROWS; iRow++) { OLEDUpdateMask[iDevice][iRow] = 1; }
     }
 }
 
@@ -929,14 +930,38 @@ void OLEDClearRow(uint8_t iDevice, uint8_t iRow)
     OLEDDisplayCartesianBuffer(iDevice);
 }
 
+
+
+uint8_t _OLEDBipolarRow=0;
 void OLEDDisplayBipolarRow(uint8_t iRow, uint8_t iSource)
 {
 
-    for (int iDisplay=0; iDisplay<NUM_OLED_DISPLAYS; iDisplay++)
+
+    // if the row is different, reset the mask on the old row
+    if (_OLEDBipolarRow != iRow)
     {
-        OLEDDisplayBipolar(iDisplay, inBP[iSource][iDisplay*2  ], iRow,  0);
-        OLEDDisplayBipolar(iDisplay, inBP[iSource][iDisplay*2+1], iRow, 10);
+        for (int iDisplay=0; iDisplay<NUM_OLED_DISPLAYS; iDisplay++) { OLEDUpdateMask[iDisplay][_OLEDBipolarRow] = 1; }
     }
+    _OLEDBipolarRow = iRow;
+
+    if (bBipolarDisplayEnable)
+    {
+        for (int iDisplay=0; iDisplay<NUM_OLED_DISPLAYS; iDisplay++)
+        {
+            // Converted to for loop for smaller compiled footprint
+            //OLEDClearRow(iDisplay, iRow);
+            if (OLEDUpdateMask[iDisplay][iRow]) { OLEDClearRow(iDisplay, iRow); }
+            OLEDUpdateMask[iDisplay][iRow] = 0;
+            for (int i=0; i<2; i++) { OLEDDisplayBipolar(iDisplay, inBP[iSource][iDisplay*2+i  ], iRow,  i*10); }
+            //OLEDDisplayBipolar(iDisplay, inBP[iSource][iDisplay*2  ], iRow,  0);
+            //OLEDDisplayBipolar(iDisplay, inBP[iSource][iDisplay*2+1], iRow, 10);
+        }
+    }
+    else
+    {
+        for (int iDisplay=0; iDisplay<NUM_OLED_DISPLAYS; iDisplay++) { OLEDUpdateMask[iDisplay][iRow] = 1; }
+    }
+
 }
 
 
@@ -1002,8 +1027,11 @@ void OLED_setstring()
         int iOffset=0;
         for(int iRow = 0; iRow < NUM_TEXT_ROWS; iRow++ )
         {
-            pad16(OLEDTxt[iDevice][iRow]);
-            strncpy(&OLEDTextBuff[iDevice][0+iOffset],  OLEDTxt[iDevice][iRow], 16);
+            if ( OLEDUpdateMask[iDevice][iRow] )
+            {
+                pad16(OLEDTxt[iDevice][iRow]);
+                strncpy(&OLEDTextBuff[iDevice][0+iOffset],  OLEDTxt[iDevice][iRow], 16);
+            }
             iOffset+=16;
         }
         OLED_Print_ParamLeft(iDevice);

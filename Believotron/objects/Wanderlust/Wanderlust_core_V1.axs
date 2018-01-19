@@ -281,7 +281,9 @@
       </attribs>
    </obj>
    <obj type="script/BelievotronCore_PCB1005_KnobCore" uuid="dea40d4c-0e25-49d0-993a-55866aabd090" name="BelievotronCore_PCB1005_KnobCore_1" x="1288" y="1736">
-      <params/>
+      <params>
+         <int32 name="BipolarUserRow" value="0"/>
+      </params>
       <attribs>
          <text attributeName="script">
             <sText><![CDATA[int cnt = 1;
@@ -310,10 +312,11 @@ void SPI_CS_ALL_OFF()
 // </SPI stuff>
 
 // Default Voodoo to make serial communication working; Rabbithole of shared memory
+#define TXBUFFSIZE 128
 void LinkTxRxBuffers(void)
 {
-	static uint8_t _txbuf[8] __attribute__ ((section (".sram2")));
-	static uint8_t _rxbuf[8] __attribute__ ((section (".sram2")));
+	static uint8_t _txbuf[TXBUFFSIZE] __attribute__ ((section (".sram2")));
+	static uint8_t _rxbuf[TXBUFFSIZE] __attribute__ ((section (".sram2")));
 	txbuf = _txbuf;
 	rxbuf = _rxbuf;
 }
@@ -351,6 +354,11 @@ void setup(void)
 	OLED_setstring();
 	//OLED_Sandbox();
 	OLEDDisplay();
+
+	OLEDClearRow(0,2 );
+	OLEDClearRow(1,2 );
+	OLEDClearRow(2,2 );
+	OLEDClearRow(3,2 );
 	
 
 }
@@ -364,14 +372,38 @@ void loop(void)
 
 // Debug - TBD enable with switch, and perform without loss of audio processing
 
-//	static int iOLED=0;	
-//	iOLED++;
-//	if (iOLED==2000)
-//	{
-//		OLEDInit();
+	static int iOLED=0;	
+	iOLED++;
+
+	uint8_t iRow = 2;
+
+	//OLEDDisplayBipolarRow(iRow, BIPOLAR_IN_USER );
+
+	
+	//OLEDCountUp();
+
+	
+	//if (iOLED==100)
+	//{
+	
+//	OLEDCountUp();
+//	chThdSleepMilliseconds(20); 	
+	
+	//	OLEDInit();		
 //		//OLED_Sandbox();
-//		OLED_setstring();
-//		OLEDDisplay();
+		//OLED_setstring();
+		
+		//OLED_checkerboardTest();
+
+		//OLEDMemDebug();
+		OLED_setstring();
+		OLEDDisplay();
+	//	OLEDCountUp();
+
+		//OLEDDisplayDebug();
+
+		
+		
 //		iOLED=0;
 //	}
 

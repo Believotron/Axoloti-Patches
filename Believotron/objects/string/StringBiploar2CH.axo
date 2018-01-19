@@ -1,0 +1,57 @@
+<objdefs appVersion="1.0.12">
+   <obj.normal id="StringBiploar2CH" uuid="a1170f7b-3592-43a5-bdff-c2c8947488ef">
+      <sDescription>constant string</sDescription>
+      <author>Johannes Taelman</author>
+      <license>BSD</license>
+      <inlets>
+         <frac32.bipolar name="i0_"/>
+         <frac32.bipolar name="i1_"/>
+      </inlets>
+      <outlets>
+         <charptr32 name="out" description="string"/>
+      </outlets>
+      <displays/>
+      <params/>
+      <attribs/>
+      <code.declaration><![CDATA[char c[16];
+char itoaBuff[16];
+char cFormat[8];
+char cMetaFormat[8];
+char cBuff[2], cBuff1[2];
+
+int32_t iRoot, iDecimal, iRoot1, iDecimal1;]]></code.declaration>
+      <code.init><![CDATA[strcpy(&c[0],"                ");]]></code.init>
+      <code.krate><![CDATA[iRoot    = inlet_i0__ / 2097100;
+iDecimal = inlet_i0__ / 209710;
+
+iRoot1    = inlet_i1__ / 2097100;
+iDecimal1 = inlet_i1__ / 209710;
+
+//strcpy (cFormat, "%+0");
+//sprintf(cMetaFormat, "%d", 3); // Creates the format string
+//strcat (cFormat, cMetaFormat);
+//strcat (cFormat, "d");    
+//sprintf(c, cFormat, iRoot);
+
+
+sprintf(cFormat, "%d", iDecimal);
+cBuff[0] = cFormat[ strlen(cFormat)-1 ];
+cBuff[1] = '\0';
+
+sprintf(cFormat, "%d", iDecimal1);
+cBuff1[0] = cFormat[ strlen(cFormat)-1 ];
+cBuff1[1] = '\0';
+
+
+
+sprintf(c, "%+03d.%1s      %+03d.%1s", iRoot,cBuff, iRoot1, cBuff1);
+
+//sprintf(c,     "%+03d", iRoot);
+//sprintf(cBuff, ".%1d"   , iDecimal);
+//strcat (c, cBuff);
+
+//sprintf(c, ".%d"   , iDecimal);
+
+outlet_out = &c[0];]]></code.krate>
+   </obj.normal>
+</objdefs>

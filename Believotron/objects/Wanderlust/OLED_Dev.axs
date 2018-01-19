@@ -163,6 +163,12 @@
       <params/>
       <attribs/>
    </obj>
+   <obj type="ctrl/dial b" uuid="862e7d7f29093cb1ce4aed72244d118ad4d46692" name="dial_2" x="196" y="1386">
+      <params>
+         <frac32.s.map name="value" value="39.49999952316284"/>
+      </params>
+      <attribs/>
+   </obj>
    <obj type="conv/unipolar2bipolar" uuid="efc8ee28c508740c5edf7995eaaa07a6d6818e5e" name="unipolar2bipolar_5" x="1554" y="1428">
       <params/>
       <attribs/>
@@ -210,6 +216,16 @@
       <attribs/>
    </obj>
    <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="knob_top_3" x="1694" y="1554">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="ctrl/dial b" uuid="862e7d7f29093cb1ce4aed72244d118ad4d46692" name="dial_3" x="196" y="1568">
+      <params>
+         <frac32.s.map name="value" value="-60.00000047683716"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="string/StringBiploar2CH" uuid="a1170f7b-3592-43a5-bdff-c2c8947488ef" name="StringBiploar2CH_1" x="378" y="1568">
       <params/>
       <attribs/>
    </obj>
@@ -305,7 +321,9 @@
       </attribs>
    </obj>
    <obj type="script/BelievotronCore_PCB1005_KnobCore" uuid="dea40d4c-0e25-49d0-993a-55866aabd090" name="BelievotronCore_PCB1005_KnobCore_1" x="1274" y="1736">
-      <params/>
+      <params>
+         <int32 name="BipolarUserRow" value="0"/>
+      </params>
       <attribs>
          <text attributeName="script">
             <sText><![CDATA[int cnt = 1;
@@ -377,10 +395,10 @@ void setup(void)
 	//OLED_Sandbox();
 	OLEDDisplay();
 
-	OLEDClearRow(0,3 );
-	OLEDClearRow(1,3 );
-	OLEDClearRow(2,3 );
-	OLEDClearRow(3,3 );
+	OLEDClearRow(0,2 );
+	OLEDClearRow(1,2 );
+	OLEDClearRow(2,2 );
+	OLEDClearRow(3,2 );
 	
 
 }
@@ -397,9 +415,9 @@ void loop(void)
 	static int iOLED=0;	
 	iOLED++;
 
-	uint8_t iRow = 3;
+	uint8_t iRow = 2;
 
-	OLEDDisplayBipolarRow(iRow, BIPOLAR_IN_USER );
+	//OLEDDisplayBipolarRow(iRow, BIPOLAR_IN_USER );
 
 	
 	//OLEDCountUp();
@@ -418,7 +436,8 @@ void loop(void)
 		//OLED_checkerboardTest();
 
 		//OLEDMemDebug();
-		//OLEDDisplay();
+		OLED_setstring();
+		OLEDDisplay();
 	//	OLEDCountUp();
 
 		//OLEDDisplayDebug();
@@ -1168,10 +1187,6 @@ void loop(void)
          <dest obj="mux_1" inlet="i2"/>
       </net>
       <net>
-         <source obj="mux_1" outlet="o"/>
-         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="OLEDA0_"/>
-      </net>
-      <net>
          <source obj="&gt;c_1" outlet="out"/>
          <dest obj="JOY0_UP" inlet="outlet"/>
       </net>
@@ -1293,6 +1308,18 @@ void loop(void)
       <net>
          <source obj="mux_16" outlet="o"/>
          <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="OLEDD3_"/>
+      </net>
+      <net>
+         <source obj="StringBiploar2CH_1" outlet="out"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="OLEDA0_"/>
+      </net>
+      <net>
+         <source obj="dial_2" outlet="out"/>
+         <dest obj="StringBiploar2CH_1" inlet="i0_"/>
+      </net>
+      <net>
+         <source obj="dial_3" outlet="out"/>
+         <dest obj="StringBiploar2CH_1" inlet="i1_"/>
       </net>
    </nets>
    <settings>

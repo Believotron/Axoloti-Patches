@@ -54,7 +54,12 @@
          <bool32 name="POR_" description="Power on reset"/>
       </outlets>
       <displays/>
-      <params/>
+      <params>
+         <int32 name="BipolarUserRow" noLabel="true">
+            <MinValue i="0"/>
+            <MaxValue i="3"/>
+         </int32>
+      </params>
       <attribs>
          <text name="script"/>
       </attribs>
@@ -67,7 +72,7 @@ int32_t Page;
 int32_t LEDcolor;
 int32_t LEDmode;
 int32_t stepNum;
-int32_t stepIntensity,in2,reverseKnobs, inBP[8];
+int32_t stepIntensity,in2,reverseKnobs, inBP[3][8], bipolarInUserRow;
 int32_t out1,out2,out3;
 
 int32_t foo;
@@ -98,11 +103,14 @@ out3=0;
 u8Count=0;
 PORCount=0;
 
-
-for (int i=0; i<8; i++)
+for (int iChan=0; iChan<3; iChan++)
 {
-	inBP[i] = 0;
+	for (int i=0; i<8; i++)
+	{
+		inBP[iChan][i] = 0;
+	}	
 }
+
 
 for (int y=0; y<2; y++)
 {
@@ -129,6 +137,8 @@ outlet_knbT4__ = this->knb[0][4];
 outlet_knbT5__ = this->knb[0][5];
 outlet_knbT6__ = this->knb[0][6];
 outlet_knbT7__ = this->knb[0][7];
+
+// Joystics out
 outlet_knbB0__ = this->knb[1][0];
 outlet_knbB1__ = this->knb[1][1];
 outlet_knbB2__ = this->knb[1][2];
@@ -137,21 +147,30 @@ outlet_knbB4__ = this->knb[1][4];
 outlet_knbB5__ = this->knb[1][5];
 outlet_knbB6__ = this->knb[1][6];
 outlet_knbB7__ = this->knb[1][7];
+
+// Joystics access to outside .c files
+for (int i=0; i<8; i++){	this->inBP[1][i] = this->knb[1][i]; }
+
+
 this->reverseKnobs  = inlet_reverseKnobs__;
-this->inBP[0] = inlet_i0__;
-this->inBP[1] = inlet_i1__;
-this->inBP[2] = inlet_i2__;
-this->inBP[3] = inlet_i3__;
-this->inBP[4] = inlet_i4__;
-this->inBP[5] = inlet_i5__;
-this->inBP[6] = inlet_i6__;
-this->inBP[7] = inlet_i7__;
+
+// Bipolar input access to outside .c files
+this->inBP[0][0] = inlet_i0__;
+this->inBP[0][1] = inlet_i1__;
+this->inBP[0][2] = inlet_i2__;
+this->inBP[0][3] = inlet_i3__;
+this->inBP[0][4] = inlet_i4__;
+this->inBP[0][5] = inlet_i5__;
+this->inBP[0][6] = inlet_i6__;
+this->inBP[0][7] = inlet_i7__;
+
+this->bipolarInUserRow = param_BipolarUserRow;
 
 
 
 
 
-if(u8Count < 10) // have to do it the second time, bc the txt won't fully load on the first frame
+//if(u8Count < 10) // have to do it the second time, bc the txt won't fully load on the first frame
 {
 	outlet_POR__ = 1;
 	strcpy(OLEDTxt[0][0], inlet_OLEDA0__);

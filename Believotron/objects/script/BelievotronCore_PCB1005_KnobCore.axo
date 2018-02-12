@@ -174,7 +174,7 @@ this->bBipolarDisplayEnable = inlet_enableBipolarRow__;
 
 //if(u8Count < 10) // have to do it the second time, bc the txt won't fully load on the first frame
 {
-	outlet_POR__ = 1;
+	//outlet_POR__ = 1;
 	strcpy(OLEDTxt[0][0], inlet_OLEDA0__);
 	strcpy(OLEDTxt[0][1], inlet_OLEDA1__);
 	strcpy(OLEDTxt[0][2], inlet_OLEDA2__);

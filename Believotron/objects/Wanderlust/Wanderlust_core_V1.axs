@@ -282,7 +282,7 @@
    </obj>
    <obj type="script/BelievotronCore_PCB1005_KnobCore" uuid="dea40d4c-0e25-49d0-993a-55866aabd090" name="BelievotronCore_PCB1005_KnobCore_1" x="1288" y="1736">
       <params>
-         <int32 name="BipolarUserRow" value="0"/>
+         <int32 name="BipolarUserRow" onParent="true" value="3"/>
       </params>
       <attribs>
          <text attributeName="script">
@@ -364,18 +364,16 @@ void setup(void)
 }
 void loop(void)
 {	
+
+	for (int i=0; i<2; i++) { readADCAndOutput(GPIOB, 7-i, i); } // Compiles to a smaller SRAM footprint in a for loop
 	
-	
-	readADCAndOutput(GPIOB, 7, 0);		
-	readADCAndOutput(GPIOB, 6, 1);
+	//readADCAndOutput(GPIOB, 7, 0);		
+	//readADCAndOutput(GPIOB, 6, 1);
 	chThdSleepMilliseconds(1); 	
 
 // Debug - TBD enable with switch, and perform without loss of audio processing
 
-	static int iOLED=0;	
-	iOLED++;
-
-	uint8_t iRow = 2;
+	
 
 	//OLEDDisplayBipolarRow(iRow, BIPOLAR_IN_USER );
 
@@ -765,6 +763,42 @@ void loop(void)
       <attribs/>
    </obj>
    <obj type="patch/inlet string" uuid="6c562c1a7890cccf18fa7327d8baa476d0926cd8" name="OLED D3" x="994" y="2814">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="patch/inlet f" uuid="5c585d2dcd9c05631e345ac09626a22a639d7c13" name="i0" x="1022" y="2898">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="patch/inlet f" uuid="5c585d2dcd9c05631e345ac09626a22a639d7c13" name="i1" x="1022" y="2940">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="patch/inlet f" uuid="5c585d2dcd9c05631e345ac09626a22a639d7c13" name="i2" x="1022" y="2982">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="patch/inlet f" uuid="5c585d2dcd9c05631e345ac09626a22a639d7c13" name="i3" x="1022" y="3024">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="patch/inlet f" uuid="5c585d2dcd9c05631e345ac09626a22a639d7c13" name="i4" x="1022" y="3066">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="patch/inlet f" uuid="5c585d2dcd9c05631e345ac09626a22a639d7c13" name="i5" x="1022" y="3108">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="patch/inlet f" uuid="5c585d2dcd9c05631e345ac09626a22a639d7c13" name="i6" x="1022" y="3150">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="patch/inlet f" uuid="5c585d2dcd9c05631e345ac09626a22a639d7c13" name="i7" x="1022" y="3192">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="patch/inlet b" uuid="3b0d3eacb5bb978cb05d1372aa2714d5a4790844" name="enBipolarRow" x="1008" y="3248">
       <params/>
       <attribs/>
    </obj>
@@ -1259,6 +1293,42 @@ void loop(void)
       <net>
          <source obj="and_2" outlet="o"/>
          <dest obj="JOY1_BTN" inlet="outlet"/>
+      </net>
+      <net>
+         <source obj="i0" outlet="inlet"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i0_"/>
+      </net>
+      <net>
+         <source obj="i1" outlet="inlet"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i1_"/>
+      </net>
+      <net>
+         <source obj="i2" outlet="inlet"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i2_"/>
+      </net>
+      <net>
+         <source obj="i3" outlet="inlet"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i3_"/>
+      </net>
+      <net>
+         <source obj="i4" outlet="inlet"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i4_"/>
+      </net>
+      <net>
+         <source obj="i5" outlet="inlet"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i5_"/>
+      </net>
+      <net>
+         <source obj="i6" outlet="inlet"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i6_"/>
+      </net>
+      <net>
+         <source obj="i7" outlet="inlet"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="i7_"/>
+      </net>
+      <net>
+         <source obj="enBipolarRow" outlet="inlet"/>
+         <dest obj="BelievotronCore_PCB1005_KnobCore_1" inlet="enableBipolarRow_"/>
       </net>
    </nets>
    <settings>

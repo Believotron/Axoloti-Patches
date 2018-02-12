@@ -306,7 +306,7 @@
    </obj>
    <obj type="script/BelievotronCore_PCB1005_KnobCore" uuid="dea40d4c-0e25-49d0-993a-55866aabd090" name="BelievotronCore_PCB1005_KnobCore_1" x="1274" y="1736">
       <params>
-         <int32 name="BipolarUserRow" value="3"/>
+         <int32 name="BipolarUserRow" onParent="true" value="3"/>
       </params>
       <attribs>
          <text attributeName="script">
@@ -1314,9 +1314,9 @@ void loop(void)
    </settings>
    <notes><![CDATA[]]></notes>
    <windowPos>
-      <x>268</x>
-      <y>94</y>
-      <width>1832</width>
-      <height>1017</height>
+      <x>395</x>
+      <y>113</y>
+      <width>1506</width>
+      <height>1003</height>
    </windowPos>
 </patch-1.0>
